@@ -108,22 +108,21 @@ export const COLLECTIONS_QUERY = `
 `
 
 export const PRODUCTS_QUERY = `
-  query GetProducts($first: Int!, $after: String) {
+  query GetProducts($after: String) {
     shop {
-      products(first: $first, after: $after) {
+      products(first: 17, after: $after, query: "published_status:published") {
         pageInfo {
           hasNextPage
         }
         edges {
           cursor
           node {
-            availableForSale
             createdAt
             description
             descriptionHtml
             handle
             id
-            images(first: 250) {
+            images(first: 2) {
               edges {
                 node {
                   id
@@ -153,7 +152,7 @@ export const PRODUCTS_QUERY = `
             tags
             title
             updatedAt
-            variants(first: 250) {
+            variants(first: 16) {
               edges {
                 node {
                   availableForSale
